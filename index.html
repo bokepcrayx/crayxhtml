@@ -61,7 +61,7 @@
       resize: none;
     }
 
-    input[type="bayar"] {
+    input[type="submit"] {
       margin-top: 20px;
       width: 100%;
       padding: 12px;
@@ -76,7 +76,7 @@
       transition: transform 0.2s ease, box-shadow 0.3s ease;
     }
 
-    input[type="bayar"]:hover {
+    input[type="submit"]:hover {
       transform: scale(1.05);
       box-shadow: 0 0 15px #00ffcc, 0 0 30px #00bfff;
     }
@@ -108,11 +108,11 @@
     <label for="comments">Commands:</label>
     <textarea rows="4" name="comments" id="comments" placeholder="Type your command..."></textarea>
 
-    <input type="bayar" value="Bayar">
+    <input type="submit" value="Bayar">
   </form>
 
   <script>
-    document.getElementById("paymentForm").addEventListener("bayar", function(e) {
+    document.getElementById("paymentForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
       let scData = document.getElementById("script").value.split("|");
@@ -130,4 +130,4 @@
     });
   </script>
 </body>
-  </html>
+</html>
