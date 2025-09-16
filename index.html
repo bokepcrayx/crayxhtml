@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CrayxGremory Payment</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      padding: 30px 35px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      width: 360px;
+      color: #fff;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 22px;
+      letter-spacing: 1px;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      outline: none;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+    }
+
+    option {
+      color: #000;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    input[type="bayar"] {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      background: linear-gradient(135deg, #00ffcc, #00bfff);
+      color: #000;
+      box-shadow: 0 0 10px #00ffcc, 0 0 20px #00bfff;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    input[type="bayar"]:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffcc, 0 0 30px #00bfff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <form id="paymentForm">
+    <h2>CrayxGremory</h2>
+    
+    <label for="script">Choose your SC</label>
+    <select name="script" id="script">
+      <option value="Script Devil Night|50000">Script Devil Night - Rp50.000</option>
+      <option value="Web Bug Deraclas|75000">Web Bug Deraclas - Rp75.000</option>
+      <option value="Tredict Invictus|100000">Tredict Invictus - Rp100.000</option>
+    </select>
+
+    <label for="payment">Choose your payment</label>
+    <select name="payment" id="payment">
+      <option value="GoPay">GoPay</option>
+      <option value="Dana">Dana</option>
+      <option value="QRIS">QRIS</option>
+    </select>
+
+    <label for="comments">Commands:</label>
+    <textarea rows="4" name="comments" id="comments" placeholder="Type your command..."></textarea>
+
+    <input type="bayar" value="Bayar">
+  </form>
+
+  <script>
+    document.getElementById("paymentForm").addEventListener("bayar", function(e) {
+      e.preventDefault();
+
+      let scData = document.getElementById("script").value.split("|");
+      let scName = scData[0];
+      let price = scData[1];
+      let payment = document.getElementById("payment").value;
+      let command = document.getElementById("comments").value;
+
+      let telegramUser = "Crayx666";
+
+      let message = `🛒 Order Baru\n\nSC: ${scName}\n💰 Harga: Rp${price}\n💳 Payment: ${payment}\n💻 Command: ${command}`;
+
+      let url = `https://t.me/${telegramUser}?text=${encodeURIComponent(message)}`;
+      window.location.href = url;
+    });
+  </script>
+</body>
+  </html>
